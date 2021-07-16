@@ -35,11 +35,9 @@ int main() {
     int n;
     cin >> n;
     vector<int> v(2 * n);
-    for (int i = 0; i < 2 * n; i++) {
-        int x;
-        cin >> x;
-        v[i] = x;
-    }
+    for (int i = 0; i < 2 * n; i++)
+        cin >> v[i];
+
     sort(v.begin(), v.end());
     if (v.back() != v[2 * n - 2]) {
         cout << 0;
@@ -51,10 +49,11 @@ int main() {
             return 0;
         }
     }
-    int ans = 1;
+    long long int mod = 1e9 + 7;
+    long long int ans = 1;
     for (int i = 2; i <= n; i++) {
-        ans = ans * (i - 1);
-        if (i & 1) ans *= 2;
+        ans = (ans * (i - 1)) % mod;
+        if (i & 1) ans = (ans * 2) % mod;
     }
     cout << ans;
 }
