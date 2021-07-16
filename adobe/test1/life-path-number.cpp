@@ -51,40 +51,45 @@ int main() {
         sum = ans;
     }
     cout << sum;
-
+}
 //============================================
-#include<bits/stdc++.h>
-using namespace std;
-int s2i(string s){
-    int sum=0;
-    for(int i=0;i<s.length();i++){
-        sum=sum*10+(s[i]-48);
+// #include<bits/stdc++.h>
+// using namespace std;
+int s2i(string s) {
+    int sum = 0;
+    for (int i = 0; i < s.length(); i++) {
+        sum = sum * 10 + (s[i] - 48);
     }
     return sum;
 }
-int find(int n){
-    int sum=0;
-    do{
-        sum=0;
-        while(n>0){
-            sum+=n%10;
-            n=n/10;
+int find(int n) {
+    int sum = 0;
+    do {
+        sum = 0;
+        while (n > 0) {
+            sum += n % 10;
+            n = n / 10;
         }
-        n=sum;
-    }while(sum>9);
+        n = sum;
+    } while (sum > 9);
     return sum;
 }
-int main(){
+int main() {
     string n;
-    cin>>n;
-    string str="";
-    int sum=0;
-    for(int i=0;i<n.size();i++){
-        if(n[i]=='-'){sum+=find(s2i(str));str="";}
-        else if(i==n.size()-1){sum+=find(s2i(str+n[i]));break;}
-        else str+=n[i];
+    cin >> n;
+    string str = "";
+    int sum = 0;
+    for (int i = 0; i < n.size(); i++) {
+        if (n[i] == '-') {
+            sum += find(s2i(str));
+            str = "";
+        } else if (i == n.size() - 1) {
+            sum += find(s2i(str + n[i]));
+            break;
+        } else
+            str += n[i];
     }
-    sum=find(sum);
-    cout<<sum;
+    sum = find(sum);
+    cout << sum;
     return 0;
 }
