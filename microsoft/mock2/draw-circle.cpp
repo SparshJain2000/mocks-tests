@@ -19,11 +19,11 @@ Output 1
 . . . . . 
   . . .   
 */
-// testcase 4/5
+// You are using GCC
 #include <bits/stdc++.h>
 using namespace std;
 double dist(int i, int j, int n, int m) {
-    return (sqrt(pow(i - n, 2) + pow(j - m, 2)));
+    return sqrt(pow(n - i, 2) + pow(m - j, 2));
 }
 int main() {
     int n;
@@ -32,9 +32,9 @@ int main() {
     for (int i = 0; i < lim; i++) {
         for (int j = 0; j < lim; j++) {
             char c = ' ';
-            if (dist(i, j, n, n) + (2 - sqrt(5)) <= n) c = '.';
-            cout << c << " ";
+            if (dist(i, j, n, n) <= n + (sqrt(n * n + 1) - n)) c = '.';
+            cout << c << ' ';
         }
-        cout << "\n";
+        cout << '\n';
     }
 }
